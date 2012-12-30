@@ -1,7 +1,7 @@
 server {
     listen   80;
     server_name  <%= @params[:server_name] %>;
-    access_log  /var/log/nginx/localhost.access.log;
+    access_log  /var/log/nginx/<%= @params[:server_name] %>.access.log;
 
 ## Default location
     location / {
