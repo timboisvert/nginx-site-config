@@ -9,5 +9,3 @@ depends "nginx"
 %w{ debian ubuntu centos redhat fedora }.each do |os|
   supports os
 end
-
-recipe "nginx-site-config", "Installs nginx site config"
