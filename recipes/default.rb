@@ -10,8 +10,3 @@ end
 nginx_site "default" do
   action :enable
 end
-
-#install pdo
-php_pear "pdo" do
-  action :install
-end
