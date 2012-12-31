@@ -13,7 +13,7 @@ server {
     location ~* ^.+.(jpg|jpeg|gif|css|png|js|ico|xml)$ {
       access_log        off;
       expires           30d;
-      root <%= @params[:docroot] %>;
+      root <%= node["nginx-site-config"]["docroot"] %>;
     }
 
 ## Parse all .php file in the shared (mounted) /vagrant directory
