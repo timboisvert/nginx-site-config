@@ -1,11 +1,11 @@
 server {
     listen   80;
-    server_name  <%= @params[:server_name] %>;
-    access_log  /var/log/nginx/<%= @params[:server_name] %>.access.log;
+    server_name  <%= node["nginx-site-config"]["server_name"] %>;
+    access_log  /var/log/nginx/<%= node["nginx-site-config"]["server_name"] %>.access.log;
 
 ## Default location
     location / {
-        root   <%= @params[:docroot] %>;
+        root   <%= node["nginx-site-config"]["docroot"] %>
         index  index.php;
     }
 
@@ -21,7 +21,7 @@ server {
         fastcgi_split_path_info ^(.+\.php)(.*)$;
         fastcgi_pass   backend;
         fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  <%= @params[:docroot] %>$fastcgi_script_name;
+        fastcgi_param  SCRIPT_FILENAME  <%= node["nginx-site-config"]["docroot"] %>$fastcgi_script_name;
         include fastcgi_params;
         fastcgi_param  QUERY_STRING     $query_string;
         fastcgi_param  REQUEST_METHOD   $request_method;
