@@ -1,10 +1,16 @@
-app_config = node["nginx-site-config"]
-
 include_recipe "nginx"
 
-nginx_site "site" do
-  server_name app_config['server_name']
-  docroot app_config['docroot']
-  template "site.conf.erb"
+template "#{node[:nginx][:dir]}/sites-available/#{node["nginx-site-config"]["key"]}" do
+  source "site.conf.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  variables(
+    :docroot => node["nginx-site-config"]["docroot"],
+    :server_name => node["nginx-site-config"]['server_name']
+  )
+end
+
+nginx_site "#{node[:nginx][:dir]}/sites-available/#{node["nginx-site-config"]["key"]}" do
   action :enable
 end
