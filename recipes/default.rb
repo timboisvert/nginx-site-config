@@ -7,6 +7,6 @@ template "#{node[:nginx][:dir]}/sites-available/#{node["nginx-site-config"]["key
   mode "0644"
 end
 
-nginx_site "#{node[:nginx][:dir]}/sites-available/#{node["nginx-site-config"]["key"]}" do
+nginx_site "#{node["nginx-site-config"]["key"]}" do
   action :enable
 end
