@@ -5,6 +5,6 @@ include_recipe "nginx"
 nginx_site "site" do
   server_name app_config['server_name']
   docroot app_config['docroot']
-  template "nginx/site.conf.erb"
+  template "site.conf.erb"
   action :enable
 end
