@@ -10,3 +10,7 @@ end
 nginx_site "default" do
   action :enable
 end
+
+service "php5-fpm" do
+	action :restart
+end
